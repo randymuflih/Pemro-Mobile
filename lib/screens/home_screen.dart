@@ -4,13 +4,14 @@ import 'package:provider/provider.dart';
 import '../providers/auth_provider.dart';
 import 'admin/manage_books_screen.dart';
 import 'catalog_screen.dart';
+import 'loans/loan_list_screen.dart';
 import 'profile_screen.dart';
 
 /// Halaman utama setelah login, berisi menu navigasi bawah.
 ///
 /// Authorization di UI: daftar menu ditentukan oleh role pengguna.
-/// - Admin   : Katalog, Kelola Buku, Profil.
-/// - Anggota : Katalog, Profil.
+/// - Admin   : Katalog, Kelola Buku, Peminjaman (semua anggota), Profil.
+/// - Anggota : Katalog, Pinjaman Saya, Profil.
 /// Aturan akses tetap dicek ulang di provider (lihat BookProvider._ensureAdmin),
 /// jadi menyembunyikan menu di sini bukan satu-satunya pengaman.
 class HomeScreen extends StatefulWidget {
@@ -98,7 +99,25 @@ const _adminMenus = [
     selectedIcon: Icons.edit_note,
     page: ManageBooksScreen(),
   ),
+  // Halaman sama dengan milik anggota; isinya dibedakan oleh LoanProvider.
+  _Menu(
+    label: 'Peminjaman',
+    title: 'Semua Peminjaman',
+    icon: Icons.assignment_outlined,
+    selectedIcon: Icons.assignment,
+    page: LoanListScreen(),
+  ),
   _profileMenu,
 ];
 
-const _memberMenus = [_catalogMenu, _profileMenu];
+const _memberMenus = [
+  _catalogMenu,
+  _Menu(
+    label: 'Pinjaman Saya',
+    title: 'Pinjaman Saya',
+    icon: Icons.assignment_outlined,
+    selectedIcon: Icons.assignment,
+    page: LoanListScreen(),
+  ),
+  _profileMenu,
+];

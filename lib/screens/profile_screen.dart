@@ -56,7 +56,8 @@ class ProfileScreen extends StatelessWidget {
                 Text('Hak akses', style: theme.textTheme.titleMedium),
                 const SizedBox(height: 8),
                 // Penjelasan singkat apa saja yang boleh dilakukan role ini.
-                for (final access in user.isAdmin ? _adminAccess : _memberAccess)
+                for (final access
+                    in user.isAdmin ? _adminAccess : _memberAccess)
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 2),
                     child: Row(
@@ -86,6 +87,7 @@ class ProfileScreen extends StatelessWidget {
 const _adminAccess = [
   'Melihat katalog buku',
   'Menambah, mengubah, dan menghapus buku',
+  'Melihat semua peminjaman dan memproses pengembalian',
 ];
 
 const _memberAccess = [
