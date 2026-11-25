@@ -23,6 +23,9 @@ class BookProvider extends ChangeNotifier {
   String? get errorMessage => _errorMessage;
   String get query => _query;
 
+  /// Semua buku tanpa filter pencarian, dipakai di halaman kelola buku.
+  List<Book> get allBooks => List.unmodifiable(_books);
+
   /// Daftar buku yang sudah difilter sesuai kata kunci pencarian.
   List<Book> get books {
     if (_query.isEmpty) return List.unmodifiable(_books);

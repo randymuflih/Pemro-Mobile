@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/auth_provider.dart';
+import 'admin/manage_books_screen.dart';
 import 'catalog_screen.dart';
 import 'profile_screen.dart';
 
@@ -95,8 +96,7 @@ const _adminMenus = [
     title: 'Kelola Buku',
     icon: Icons.edit_note_outlined,
     selectedIcon: Icons.edit_note,
-    // Sementara: halaman kelola buku dibuat di langkah berikutnya.
-    page: Center(child: Text('Kelola buku segera hadir')),
+    page: ManageBooksScreen(),
   ),
   _profileMenu,
 ];
